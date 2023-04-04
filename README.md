@@ -24,18 +24,60 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
+### Step1:
 Importing the libraries
+### Step2:
 Importing the dataset
+### Step3:
 Taking care of missing data
+### Step4:
 Encoding categorical data
+### Step5:
 Normalizing the data
+### Step6:
 Splitting the data into test and train
 
 ## PROGRAM:
-/Write your code here/
+```
+Reg:212221230107
+Name: M.Sowmya
+```
+```
+import pandas as pd
+df=pd.read_csv("Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 
 ## OUTPUT:
-/ Show the result/
+![output](neural1.1.png)
+![output](neural1.2.png)
+![output](./neural1.3.png)
+![output](./neural1.4.png)
+![output](./neural1.5.png)
+![output](./neural1.6.png)
+![output](./neural1.7.png)
+![output](./neural1.8.png)
 
-## RESULT
-/Type your result here/
+## RESULT:
+Thus the above program for standardizing the given data was implemented successfully.
